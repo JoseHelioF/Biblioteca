@@ -82,6 +82,7 @@ export default {
         .then(({ data }) => {
           /* Sucesso */
           this.form = data;
+          console.log("Consulta");
         })
         .catch((error) => {
           /* Erro */

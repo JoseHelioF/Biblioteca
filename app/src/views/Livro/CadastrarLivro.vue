@@ -1,5 +1,5 @@
 <template>
-  <h1>Cadastro Produto</h1>
+  <h1>Cadastro Livros</h1>
 
   <form @submit="submit">
     <p>

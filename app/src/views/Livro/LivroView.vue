@@ -1,23 +1,47 @@
 <template>
-  <h1>Livros</h1>
+  <div class="container">
+    <h1 class="mb-5">Livros</h1>
 
-  <div class="alert alert-success" role="alert">
-    A simple success alert—check it out!
+    <table class="table table-dark table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Titulo</th>
+          <th scope="col">Autor</th>
+          <th scope="col">Descrição</th>
+          <th scope="col">Categoria</th>
+          <th scope="col">Ano</th>
+          <th scope="col">Copias</th>
+          <th scope="col">Copias Disponiveis</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="livro in listaLivro">
+          <th scope="row">{{ livro.codigo }}</th>
+          <td>{{ livro.titulo }}</td>
+          <td>{{ livro.autor }}</td>
+          <td>{{ livro.descricao }}</td>
+          <td>{{ livro.codigo_categoria }}</td>
+          <td>{{ livro.ano }}</td>
+          <td>{{ livro.copias }}</td>
+          <td>{{ livro.copias_disponiveis }}</td>
+          <td>
+            <button @click="deletar(livro.codigo)">
+              Deletar
+            </button>
+            <router-link :to="{ name: 'ConsultarLivro', params: { codigo: livro.codigo } }">
+              <button>
+                Consultar
+              </button>
+            </router-link>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
   </div>
-
-  <ul>
-    <li v-for="livro in listaLivro">
-      Código {{ livro.codigo }}
-      <button @click="deletar(livro.codigo)">
-        Deletar
-      </button>
-      <router-link :to="{ name: 'ConsultarLivro', params: { codigo: livro.codigo } }">
-        <button>
-          Consultar
-        </button>
-      </router-link>
-    </li>
-  </ul>
+  
   <router-link :to="{ name: 'CadastrarLivro' }"><button>Criar livro</button></router-link>
 
 </template>

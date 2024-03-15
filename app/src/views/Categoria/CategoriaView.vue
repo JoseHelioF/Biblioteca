@@ -1,19 +1,34 @@
 <template>
-  <h1>Categoria</h1>
+  <div class="container">
+    <h1 class="mb-5">Categoria</h1>
 
-  <ul>
-    <li v-for="categoria in listaCategoria">
-      Nome {{ categoria.descricao }}
-      <button @click="deletar(categoria.codigo)">
-        Deletar
-      </button>
-      <router-link :to="{ name: 'ConsultarCategoria', params: { codigo: categoria.codigo } }">
-        <button>
-          Consultar
-        </button>
-      </router-link>
-    </li>
-  </ul>
+    <table class="table table-dark table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Descrição</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="categoria in listaCategoria">
+          <th scope="row">{{ categoria.codigo }}</th>
+          <th scope="row">{{ categoria.descricao }}</th>
+
+         <td>
+            <button @click="deletar(categoria.codigo)">
+              Deletar
+            </button>
+            <router-link :to="{ name: 'ConsultarCategoria', params: { codigo: categoria.codigo } }">
+              <button>
+                Consultar
+              </button>
+            </router-link>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <router-link :to="{ name: 'CadastrarCategoria' }"><button>Criar categoria</button></router-link>
 
 </template>
